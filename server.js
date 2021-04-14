@@ -35,6 +35,8 @@ app.get('/profile/:id', (req, res) => {profile.handleProfile(req, res, postgres)
 app.put('/image', (req, res) => {image.handleImage(req, res, postgres)});
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)});
 
-app.listen(3000, () => {
-  console.log('App is running on port 3000');
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
